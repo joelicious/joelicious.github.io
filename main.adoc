@@ -4,5 +4,5 @@ include::docs/vars/notes.adoc[]
 = Documentation for {ProjectName}
 :context: {ProjectNameID}
 
-inlcude::docs/overview-integration-on-openshift.adoc[leveloffset=+1]
+include::docs/overview-integration-on-openshift.adoc[leveloffset=+1]
 include::docs/homelab-infra.adoc[leveloffset=+1]
