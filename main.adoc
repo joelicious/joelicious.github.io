@@ -1,0 +1,7 @@
+include::attributes.adoc[]
+include::docs/vars/notes.adoc[]
+
+= Documentation for {ProjectName}
+:context: {ProjectNameID}
+
+include::docs/homelab-infra.adoc[leveloffset=+1]
