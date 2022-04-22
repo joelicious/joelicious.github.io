@@ -458,6 +458,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_openshift_assisted_installer">2.3. OpenShift Assisted Installer</a></li>
 <li><a href="#_proxmox_provision">2.4. ProxMox Provision</a></li>
+<li><a href="#_making_your_openshift_cluster_available_outside_homelab">2.5. Making Your OpenShift Cluster Available outside Homelab</a></li>
 </ul>
 </li>
 </ul>
@@ -721,6 +722,69 @@ button in the configuration table. This is depicted in the following figure:</p>
 </div>
 <div class="sect2">
 <h3 id="_proxmox_provision"><a class="anchor" href="#_proxmox_provision"></a><a class="link" href="#_proxmox_provision">2.4. ProxMox Provision</a></h3>
+<div class="paragraph">
+<p>Once you have the ISO Images added to the filesystems, then it is just a matter of creating VMs
+for the OpenShift installer. The beauty of the assisted installer is that it will auto-choose
+the role of the each VM/Node based on its hardware profile.</p>
+</div>
+<div class="paragraph">
+<p>Since my homelab has 3 bare metal nodes, my approach has been to allocate a control-plane-sized
+VM on each bare metal node giving some notion of high availability. I then allocate the balance
+of the hardware resources to an additional VM.</p>
+</div>
+<div class="paragraph">
+<p>Specifically, my three hosts have the following hardware profiles:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>pve1</code> : 40 VCPUs, 128 GiB Ram, 1 TB</p>
+</li>
+<li>
+<p><code>pve2</code> : 16 VCPUs, 64 GiB Ram, 500 GiB disk</p>
+</li>
+<li>
+<p><code>pve3</code> : 8 VCPUs, 64 GiB Ram, 500 GiB disk</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Which is then decomposed into the following VMs:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>pve1 \ ocp1</code> : 4 VCPU, 16 GiB Ram, 120 GiB disk</p>
+</li>
+<li>
+<p><code>pve1 \ ocp4</code> : 36 VCPU, 112 GiB Ram, 700 GiB disk</p>
+</li>
+<li>
+<p><code>pve2 \ ocp2</code> : 4 VCPU, 16 GiB Ram, 120 GiB disk</p>
+</li>
+<li>
+<p><code>pve2 \ ocp5</code> : 12 VCPU, 48 GiB Ram, 240 GiB disk</p>
+</li>
+<li>
+<p><code>pve3 \ ocp3</code> : 4 VCPU, 16 GiB Ram, 120 GiB disk</p>
+</li>
+<li>
+<p><code>pve3 \ ocp6</code> : 4 VCPU, 48 GiB Ram, 240 GiB disk</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Upon provisioning the VMs with the provided ISO Image, the hosts will register themselves
+with the Red Hat Hybrid Cloud Console, roles are assigned, and then the OpenShift cluster
+is installed across the hosts.</p>
+</div>
+<div class="paragraph">
+<p>Finally, Web Console access is provide to your own cluster, along with guidance on updating
+your DNS Server or updating a local <code>/etc/hosts</code> or <code>/etc/resolv.conf</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_making_your_openshift_cluster_available_outside_homelab"><a class="anchor" href="#_making_your_openshift_cluster_available_outside_homelab"></a><a class="link" href="#_making_your_openshift_cluster_available_outside_homelab">2.5. Making Your OpenShift Cluster Available outside Homelab</a></h3>
 
 </div>
 </div>
@@ -728,7 +792,7 @@ button in the configuration table. This is depicted in the following figure:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-04-22 18:08:39 UTC
+Last updated 2022-04-22 18:34:25 UTC
 </div>
 </div>
 </body>
