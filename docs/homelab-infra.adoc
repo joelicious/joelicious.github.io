@@ -62,7 +62,8 @@ is the minimum hardware requirements:
 
 * Control plane nodes: At least 4 CPU cores, 16.00 GiB RAM, 120 GB disk size for every supervisor.
 * Workers: At least 2 CPU cores, 8.00 GiB RAM, 120 GB disk size for each worker
-* SNO: One host is required with at least 4 CPU cores, 16.00 GiB of RAM, and 120 GB of disk size storage.
+* Single Node OpenShift (SNO): One host is required with at least 4 CPU cores, 16.00 GiB of RAM, and 
+120 GB of disk size storage.
 * Also note that each host's disk write speed should meet the minimum requirements to run OpenShift.
 
 ### ProxMox Configuration
@@ -74,8 +75,8 @@ Here is a simplified set of steps that I used:
 
 * Download the latest ISO from: https://www.proxmox.com/en/downloads[https://www.proxmox.com/en/downloads]
 * Follow the install steps to provision on bare metal.
-* Configure with a static IP (10.10.10.10, 10.10.10.11, 10.10.10.12) and I choose the following 
-hostnames (pve1, pve2, pve3).
+* Configure with a static IP (`10.10.10.10`, `10.10.10.11`, `10.10.10.12`) and I choose the following 
+hostnames (`pve1`, `pve2`, `pve3`).
 
 Upon completing the install across all three nodes, then follow the steps in the GUI to
 "Create Cluster". I found the https://pve.proxmox.com/wiki/Cluster_Manager[Cluster Manager] to be quite 
