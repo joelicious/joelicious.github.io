@@ -148,5 +148,5 @@ your DNS Server or updating a local `/etc/hosts` or `/etc/resolv.conf`.
 
 ## Making Your OpenShift Cluster Available outside Homelab
 
-[TODO]
+TODO[TODO]
 

@@ -1,0 +1,19 @@
+# Camel Karavan
+
+Intro
+
+# Setting up environment
+
+install operators
+
+# IDE vs WebApp
+
+go through options
+
+# Git integration
+
+experience here
+
+# DevOps options
+
+experience here

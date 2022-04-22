@@ -1,0 +1,32 @@
+# Camel K
+
+Intoduction. 
+
+## Background
+
+Talk about strategies / youtube links
+
+## Prepare the OpenShift Cluster
+
+steps to provision operators
+
+## Simple Hello World
+
+just get one running
+
+## Talk about IDE
+
+guidance on what is available, developer workflows
+
+## Highlight what the platform can do (scaling / serverless)
+
+## Integration with Git
+
+show how to manage that integration in source reppository
+
+## Integration with DevOps
+
+How to get that going
+
+
+
