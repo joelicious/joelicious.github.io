@@ -562,22 +562,17 @@ home stuff.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The EdgeSwitch PoE+ 24 is the switch that I use for 192.168.1.x network. While there are a number
+<p>The <a href="https://store.ui.com/collections/operator-edgemax-switches/products/edgeswitch-24-250w">EdgeSwitch PoE+ 24</a>
+is the switch that I use for 192.168.1.x network. While there are a number
 devices attached to this network, for the purposes of this guide there is a FreeNas and Work Laptop.
 There is a FreeNAS baremetal node that I hope to encorporate into the OpenShift Cluster in the
 future. My Work Laptop exists on the 192.168.1.x network and can route to the 10.10.10.x network as
 needed.</p>
 </div>
 <div class="paragraph">
-<p><a href="https://store.ui.com/collections/operator-edgemax-switches/products/edgeswitch-24-250w" class="bare">https://store.ui.com/collections/operator-edgemax-switches/products/edgeswitch-24-250w</a></p>
-</div>
-<div class="paragraph">
-<p>For the homelab network, a Mikrotik Router Switch was used due to its ability to switch traffic at
-10 gbe speeds. Connected to this Mikrotik Router Switch are three baremetal computers which will
-become hosts to the OpenShift Cluster.</p>
-</div>
-<div class="paragraph">
-<p>(<a href="https://mikrotik.com/product/crs317_1g_16s_rm" class="bare">https://mikrotik.com/product/crs317_1g_16s_rm</a>)</p>
+<p>For the homelab network, a <a href="https://mikrotik.com/product/crs317_1g_16s_rm">Mikrotik Router Switch</a>
+was used due to its ability to switch traffic at 10 gbe speeds. Connected to this Mikrotik Router
+Switch are three baremetal computers which will become hosts to the OpenShift Cluster.</p>
 </div>
 <div class="sect3">
 <h4 id="_architectural_decisions"><a class="anchor" href="#_architectural_decisions"></a><a class="link" href="#_architectural_decisions">1.1.1. Architectural Decisions</a></h4>
@@ -607,13 +602,13 @@ become hosts to the OpenShift Cluster.</p>
 <div class="olist upperalpha">
 <ol class="upperalpha">
 <li>
-<p>Red Hat Virtualization (<a href="https://www.redhat.com/en/technologies/virtualization/enterprise-virtualization" class="bare">https://www.redhat.com/en/technologies/virtualization/enterprise-virtualization</a>): Based on KVM.</p>
+<p><a href="https://www.redhat.com/en/technologies/virtualization/enterprise-virtualizationcl">Red Hat Virtualization</a>: Based on KVM.</p>
 </li>
 <li>
-<p>ProxMox VE (<a href="https://www.proxmox.com/en/proxmox-ve" class="bare">https://www.proxmox.com/en/proxmox-ve</a>): Also based on KVM.</p>
+<p><a href="https://www.proxmox.com/en/proxmox-ve">ProxMox VE</a>: Also based on KVM.</p>
 </li>
 <li>
-<p>VMWare ESXi ( <a href="https://www.vmware.com/products/esxi-and-esx.html" class="bare">https://www.vmware.com/products/esxi-and-esx.html</a> ): Costs money / not open source.</p>
+<p>VMWare ESXi <a href="https://www.vmware.com/products/esxi-and-esx.html">VMWare ESXi</a>: Costs money / not open source.</p>
 </li>
 </ol>
 </div>
@@ -655,18 +650,18 @@ is the minimum hardware requirements:</p>
 <h4 id="_proxmox_configuration"><a class="anchor" href="#_proxmox_configuration"></a><a class="link" href="#_proxmox_configuration">1.2.2. ProxMox Configuration</a></h4>
 <div class="paragraph">
 <p>There are a number of guides that can walk you through the provisioning of ProxMox VE. For a deep
-dive on how to install, the following guide is very helpful: <a href="https://forum.proxmox.com/threads/proxmox-beginner-tutorial-how-to-set-up-your-first-virtual-machine-on-a-secondary-hard-disk.59559/" class="bare">https://forum.proxmox.com/threads/proxmox-beginner-tutorial-how-to-set-up-your-first-virtual-machine-on-a-secondary-hard-disk.59559/</a></p>
+dive on how to install, the following <a href="https://forum.proxmox.com/threads/proxmox-beginner-tutorial-how-to-set-up-your-first-virtual-machine-on-a-secondary-hard-disk.59559/">guide is very helpful</a>.</p>
 </div>
 <div class="paragraph">
 <p>Here is a simplified set of steps that I used:
-* Download the latest ISO from: <a href="https://www.proxmox.com/en/downloads" class="bare">https://www.proxmox.com/en/downloads</a>
+* Download the latest ISO from: <a href="https://www.proxmox.com/en/downloads">https://www.proxmox.com/en/downloads</a>
 * Follow the install steps to provision on bare metal.
 * Configure with a static IP (10.10.10.10, 10.10.10.11, 10.10.10.12) and I choose the following
 hostnames (pve1, pve2, pve3).</p>
 </div>
 <div class="paragraph">
 <p>Upon completing the install across all three nodes, then follow the steps in the GUI to
-"Create Cluster". I found the Cluster Manager (<a href="https://pve.proxmox.com/wiki/Cluster_Manager" class="bare">https://pve.proxmox.com/wiki/Cluster_Manager</a>) to be quite
+"Create Cluster". I found the <a href="https://pve.proxmox.com/wiki/Cluster_Manager">Cluster Manager</a> to be quite
 useful as all hosts were presented in a single location. Additional features such as easy
 migration of virtual machines and the ability to make cluster-wide configurations are
 just some of the features that make it worth it to cluster.</p>
@@ -676,10 +671,9 @@ just some of the features that make it worth it to cluster.</p>
 <div class="sect2">
 <h3 id="_openshift_assisted_installer"><a class="anchor" href="#_openshift_assisted_installer"></a><a class="link" href="#_openshift_assisted_installer">1.3. OpenShift Assisted Installer</a></h3>
 <div class="paragraph">
-<p>This guide was contructed for an OpenShift Assisted Cluster install, which is best described at the
-following location. <a href="https://cloud.redhat.com/blog/how-to-use-the-openshift-assisted-installer" class="bare">https://cloud.redhat.com/blog/how-to-use-the-openshift-assisted-installer</a>. The
-basic premise of this approach is that you create / declare your cluster in the Red Hat Hybrid
-Cloud Console ( <a href="https://console.redhat.com/openshift" class="bare">https://console.redhat.com/openshift</a> ).</p>
+<p>This <a href="https://cloud.redhat.com/blog/how-to-use-the-openshift-assisted-installer">guide</a> was contructed
+for an OpenShift Assisted Cluster install. The basic premise of this approach is that you create /
+declare your cluster in the <a href="https://console.redhat.com/openshift">Red Hat Hybrid Cloud Console</a>.</p>
 </div>
 <div class="paragraph">
 <p>Upon selecting "Create cluster", then select "Datacenter" and then "Bare Metal (x86_64)". At this
@@ -721,7 +715,7 @@ button in the configuration table. This is depicted in the following figure:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-04-22 17:17:52 UTC
+Last updated 2022-04-22 17:44:07 UTC
 </div>
 </div>
 </body>
