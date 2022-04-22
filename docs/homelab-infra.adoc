@@ -115,7 +115,7 @@ Upon downloading the image, it is important to make this image available to each
 in the ProxMox VE cluster. For each node, select the local disk and then the "ISO Images"
 button in the configuration table. This is depicted in the following figure:
 
-image:2022-ProxMox-ISOImages.png[ProxMox Upload Images]
+image:2022-Proxmox-ISOImages.png[ProxMox Upload Images]
 
 By uploading the ISO, it will then be available to the create VM process dialogs.
 

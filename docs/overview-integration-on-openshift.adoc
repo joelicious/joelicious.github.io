@@ -1,0 +1,39 @@
+The intent of this document is to organize all my notes during my journey of learning about
+integration technologies that can be deployed on a kubernetes / OpenShift platform. Coming
+from a background of understanding integration before these platforms, I find that I am
+often just trying to adapt what I know to what is now possible.
+
+In the past, when there was no platform to manage your workloads, we would leverage tools
+such as Apache Camel and Apache ActiveMQ to build out functionality. Projects such 
+ServiceMix and JBoss Fuse assisted in providing a consistent run-time, however many 
+enterprise requirements had to be tailored to the infrastructure that was available.
+
+With kubernetes / OpenShift, more of these enterprise requirements can be satisfied in a
+consistent manner. And perhaps more importantly, Apache Camel, Apache ActiveMQ, and 
+Strimzi (AMQ Streams) have evolved with these platforms. This is where I like to focus
+my learning, finding ways that OpenShift can make Integration easier to consume in the
+enteprise.
+
+As part of this learning path, I did take a detour in provisioning an OpenShift cluster
+in my homelab. This step is certainly not required, however there is a need to have
+a place where you can deploy these projects into an OpenShift cluster.
+
+After acquiring a platform for an integration playground, topics that are to be explored 
+will start with Camel and its subprojects.
+
+* Camel Core
+* Camel K 
+* Kamelet
+* Camel Quarkus
+* Camel Karavan
+
+Messaging
+
+* AMQ Broker
+* AMQ Streams
+
+
+
+
+
+
