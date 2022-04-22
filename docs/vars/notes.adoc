@@ -1,0 +1,3 @@
+:ProjectName: MyNotes
+:ProjectNameID: mynotes
+:ProjectVersion: 0.0.1
