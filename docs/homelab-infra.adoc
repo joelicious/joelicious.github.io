@@ -20,19 +20,16 @@ overview, there are two networks created:
 home stuff.
 * 10.10.10.x : homelab network traffic, which at this point is an OpenShift Cluster.
 
-The EdgeSwitch PoE+ 24 is the switch that I use for 192.168.1.x network. While there are a number 
+The https://store.ui.com/collections/operator-edgemax-switches/products/edgeswitch-24-250w[EdgeSwitch PoE+ 24] 
+is the switch that I use for 192.168.1.x network. While there are a number 
 devices attached to this network, for the purposes of this guide there is a FreeNas and Work Laptop.
 There is a FreeNAS baremetal node that I hope to encorporate into the OpenShift Cluster in the 
 future. My Work Laptop exists on the 192.168.1.x network and can route to the 10.10.10.x network as 
 needed.
 
-https://store.ui.com/collections/operator-edgemax-switches/products/edgeswitch-24-250w
-
-For the homelab network, a Mikrotik Router Switch was used due to its ability to switch traffic at 
-10 gbe speeds. Connected to this Mikrotik Router Switch are three baremetal computers which will
-become hosts to the OpenShift Cluster.
-
-(https://mikrotik.com/product/crs317_1g_16s_rm)
+For the homelab network, a https://mikrotik.com/product/crs317_1g_16s_rm[Mikrotik Router Switch] 
+was used due to its ability to switch traffic at 10 gbe speeds. Connected to this Mikrotik Router 
+Switch are three baremetal computers which will become hosts to the OpenShift Cluster.
 
 ### Architectural Decisions
 
@@ -45,9 +42,9 @@ become hosts to the OpenShift Cluster.
 
 There are a number of choices that were considered for a homelab virtualization platform.
 
-A. Red Hat Virtualization (https://www.redhat.com/en/technologies/virtualization/enterprise-virtualization): Based on KVM.
-B. ProxMox VE (https://www.proxmox.com/en/proxmox-ve): Also based on KVM. 
-C. VMWare ESXi ( https://www.vmware.com/products/esxi-and-esx.html ): Costs money / not open source.
+A. https://www.redhat.com/en/technologies/virtualization/enterprise-virtualizationcl[Red Hat Virtualization]: Based on KVM.
+B. https://www.proxmox.com/en/proxmox-ve[ProxMox VE]: Also based on KVM. 
+C. VMWare ESXi https://www.vmware.com/products/esxi-and-esx.html[VMWare ESXi]: Costs money / not open source.
 
 VMWare ESXi was evaluated and quickly reached the limit of managing virtual machines across 
 multiple hosts was a feature that not included in the free version. ProxMox was the next
@@ -71,26 +68,25 @@ is the minimum hardware requirements:
 ### ProxMox Configuration
 
 There are a number of guides that can walk you through the provisioning of ProxMox VE. For a deep 
-dive on how to install, the following guide is very helpful: https://forum.proxmox.com/threads/proxmox-beginner-tutorial-how-to-set-up-your-first-virtual-machine-on-a-secondary-hard-disk.59559/
+dive on how to install, the following https://forum.proxmox.com/threads/proxmox-beginner-tutorial-how-to-set-up-your-first-virtual-machine-on-a-secondary-hard-disk.59559/[guide is very helpful].
 
 Here is a simplified set of steps that I used:
-* Download the latest ISO from: https://www.proxmox.com/en/downloads
+* Download the latest ISO from: https://www.proxmox.com/en/downloads[https://www.proxmox.com/en/downloads]
 * Follow the install steps to provision on bare metal.
 * Configure with a static IP (10.10.10.10, 10.10.10.11, 10.10.10.12) and I choose the following 
 hostnames (pve1, pve2, pve3).
 
 Upon completing the install across all three nodes, then follow the steps in the GUI to
-"Create Cluster". I found the Cluster Manager (https://pve.proxmox.com/wiki/Cluster_Manager) to be quite 
+"Create Cluster". I found the https://pve.proxmox.com/wiki/Cluster_Manager[Cluster Manager] to be quite 
 useful as all hosts were presented in a single location. Additional features such as easy
 migration of virtual machines and the ability to make cluster-wide configurations are 
 just some of the features that make it worth it to cluster.
 
 ## OpenShift Assisted Installer
 
-This guide was contructed for an OpenShift Assisted Cluster install, which is best described at the 
-following location. https://cloud.redhat.com/blog/how-to-use-the-openshift-assisted-installer. The 
-basic premise of this approach is that you create / declare your cluster in the Red Hat Hybrid
-Cloud Console ( https://console.redhat.com/openshift ). 
+This https://cloud.redhat.com/blog/how-to-use-the-openshift-assisted-installer[guide] was contructed 
+for an OpenShift Assisted Cluster install. The basic premise of this approach is that you create / 
+declare your cluster in the https://console.redhat.com/openshift[Red Hat Hybrid Cloud Console].
 
 Upon selecting "Create cluster", then select "Datacenter" and then "Bare Metal (x86_64)". At this
 point there is an option to select "Assisted Installer (Technology Preview)". In the subsequent
@@ -115,11 +111,6 @@ button in the configuration table. This is depicted in the following figure:
 image:2022-Proxmox-ISOImages.png[ProxMox Upload Images]
 
 By uploading the ISO, it will then be available to the create VM process dialogs.
-
-
-
-
-
 
 ## ProxMox Provision
 
