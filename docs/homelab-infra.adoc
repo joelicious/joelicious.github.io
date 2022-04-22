@@ -10,7 +10,7 @@ network.
 
 The following is a high level diagram of the hardware for my homelab.
 
-![Architecture][2022-okc-homelab.png] 
+![Architecture][images/2022-okc-homelab.png] 
 
 In the top left of the diagram is the Unifi Dream Machine Pro (UDM-Pro). This router has the ability
 to create multiple networks and handles the routing between each network. For the purposes of this
@@ -113,7 +113,9 @@ Image file with the hopes that this would speed up the OpenShift provisioning pr
 
 Upon downloading the image, it is important to make this image available to each node
 in the ProxMox VE cluster. For each node, select the local disk and then the "ISO Images"
-button in the configuration table. This is depicted in the following figure (../images/2022-ProxMox-ISOImages.png)
+button in the configuration table. This is depicted in the following figure:
+
+![ProxMox Upload Images][images/2022-ProxMox-ISOImages.png] 
 
 By uploading the ISO, it will then be available to the create VM process dialogs.
 
