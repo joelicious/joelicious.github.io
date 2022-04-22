@@ -2,18 +2,18 @@
 
 Intro
 
-# Setting up environment
+## Setting up environment
 
 install operators
 
-# IDE vs WebApp
+## IDE vs WebApp
 
 go through options
 
-# Git integration
+## Git integration
 
 experience here
 
-# DevOps options
+## DevOps options
 
 experience here
