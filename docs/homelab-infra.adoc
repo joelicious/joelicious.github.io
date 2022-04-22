@@ -10,7 +10,7 @@ network.
 
 The following is a high level diagram of the hardware for my homelab.
 
-![Architecture][images/2022-okc-homelab.png] 
+image:2022-okc-homelab.png[Architecture] 
 
 In the top left of the diagram is the Unifi Dream Machine Pro (UDM-Pro). This router has the ability
 to create multiple networks and handles the routing between each network. For the purposes of this
