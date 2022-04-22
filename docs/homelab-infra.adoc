@@ -116,4 +116,37 @@ By uploading the ISO, it will then be available to the create VM process dialogs
 
 ## ProxMox Provision
 
+Once you have the ISO Images added to the filesystems, then it is just a matter of creating VMs 
+for the OpenShift installer. The beauty of the assisted installer is that it will auto-choose 
+the role of the each VM/Node based on its hardware profile.
+
+Since my homelab has 3 bare metal nodes, my approach has been to allocate a control-plane-sized
+VM on each bare metal node giving some notion of high availability. I then allocate the balance
+of the hardware resources to an additional VM.
+
+Specifically, my three hosts have the following hardware profiles:
+
+1. `pve1` : 40 VCPUs, 128 GiB Ram, 1 TB
+2. `pve2` : 16 VCPUs, 64 GiB Ram, 500 GiB disk
+3. `pve3` : 8 VCPUs, 64 GiB Ram, 500 GiB disk
+
+Which is then decomposed into the following VMs:
+
+1. `pve1 \ ocp1` : 4 VCPU, 16 GiB Ram, 120 GiB disk
+2. `pve1 \ ocp4` : 36 VCPU, 112 GiB Ram, 700 GiB disk
+3. `pve2 \ ocp2` : 4 VCPU, 16 GiB Ram, 120 GiB disk
+4. `pve2 \ ocp5` : 12 VCPU, 48 GiB Ram, 240 GiB disk
+5. `pve3 \ ocp3` : 4 VCPU, 16 GiB Ram, 120 GiB disk
+6. `pve3 \ ocp6` : 4 VCPU, 48 GiB Ram, 240 GiB disk
+
+Upon provisioning the VMs with the provided ISO Image, the hosts will register themselves
+with the Red Hat Hybrid Cloud Console, roles are assigned, and then the OpenShift cluster
+is installed across the hosts.
+
+Finally, Web Console access is provide to your own cluster, along with guidance on updating
+your DNS Server or updating a local `/etc/hosts` or `/etc/resolv.conf`.
+
+## Making Your OpenShift Cluster Available outside Homelab
+
+[TODO]
 
