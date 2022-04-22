@@ -1,3 +1,5 @@
+# Introduction
+
 The intent of this document is to organize all my notes during my journey of learning about
 integration technologies that can be deployed on a kubernetes / OpenShift platform. Coming
 from a background of understanding integration before these platforms, I find that I am

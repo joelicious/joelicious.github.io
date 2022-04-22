@@ -16,15 +16,15 @@ In the top left of the diagram is the https://store.ui.com/collections/unifi-net
 to create multiple networks and handles the routing between each network. For the purposes of this
 overview, there are two networks created:
 
-* 192.168.1.x : handles all non-homelab traffic in my home. This would include Network APs and general 
+* `192.168.1.x` : handles all non-homelab traffic in my home. This would include Network APs and general 
 home stuff.
-* 10.10.10.x : homelab network traffic, which at this point is an OpenShift Cluster.
+* `10.10.10.x` : homelab network traffic, which at this point is an OpenShift Cluster.
 
 The https://store.ui.com/collections/operator-edgemax-switches/products/edgeswitch-24-250w[EdgeSwitch PoE+ 24] 
-is the switch that I use for 192.168.1.x network. While there are a number 
+is the switch that I use for `192.168.1.x` network. While there are a number 
 devices attached to this network, for the purposes of this guide there is a FreeNas and Work Laptop.
 There is a FreeNAS baremetal node that I hope to encorporate into the OpenShift Cluster in the 
-future. My Work Laptop exists on the 192.168.1.x network and can route to the 10.10.10.x network as 
+future. My Work Laptop exists on the `192.168.1.x` network and can route to the `10.10.10.x` network as 
 needed.
 
 For the homelab network, a https://mikrotik.com/product/crs317_1g_16s_rm[Mikrotik Router Switch] 
@@ -44,7 +44,7 @@ There are a number of choices that were considered for a homelab virtualization 
 
 A. https://www.redhat.com/en/technologies/virtualization/enterprise-virtualizationcl[Red Hat Virtualization]: Based on KVM.
 B. https://www.proxmox.com/en/proxmox-ve[ProxMox VE]: Also based on KVM. 
-C. VMWare ESXi https://www.vmware.com/products/esxi-and-esx.html[VMWare ESXi]: Costs money / not open source.
+C. https://www.vmware.com/products/esxi-and-esx.html[VMWare ESXi]: Costs money / not open source.
 
 VMWare ESXi was evaluated and quickly reached the limit of managing virtual machines across 
 multiple hosts was a feature that not included in the free version. ProxMox was the next
@@ -71,6 +71,7 @@ There are a number of guides that can walk you through the provisioning of ProxM
 dive on how to install, the following https://forum.proxmox.com/threads/proxmox-beginner-tutorial-how-to-set-up-your-first-virtual-machine-on-a-secondary-hard-disk.59559/[guide is very helpful].
 
 Here is a simplified set of steps that I used:
+
 * Download the latest ISO from: https://www.proxmox.com/en/downloads[https://www.proxmox.com/en/downloads]
 * Follow the install steps to provision on bare metal.
 * Configure with a static IP (10.10.10.10, 10.10.10.11, 10.10.10.12) and I choose the following 
