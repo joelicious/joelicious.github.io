@@ -441,22 +441,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>Documentation for Integration on OpenShift</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
-<ul class="sectlevel0">
-<li><a href="#_homelab_infrastructure">Homelab Infrastructure</a>
 <ul class="sectlevel1">
-<li><a href="#_homelab_architecture">1. Homelab Architecture</a>
+<li><a href="#_homelab_infrastructure">1. Homelab Infrastructure</a>
 <ul class="sectlevel2">
-<li><a href="#_architectural_decisions">1.1. Architectural Decisions</a></li>
+<li><a href="#_homelab_architecture">1.1. Homelab Architecture</a>
+<ul class="sectlevel3">
+<li><a href="#_architectural_decisions">1.1.1. Architectural Decisions</a></li>
 </ul>
 </li>
-<li><a href="#_virtualization_platforms">2. Virtualization Platforms</a>
-<ul class="sectlevel2">
-<li><a href="#_minimum_requirements">2.1. Minimum Requirements</a></li>
-<li><a href="#_proxmox_configuration">2.2. ProxMox Configuration</a></li>
+<li><a href="#_virtualization_platforms">1.2. Virtualization Platforms</a>
+<ul class="sectlevel3">
+<li><a href="#_minimum_requirements">1.2.1. Minimum Requirements</a></li>
+<li><a href="#_proxmox_configuration">1.2.2. ProxMox Configuration</a></li>
 </ul>
 </li>
-<li><a href="#_openshift_assisted_installer">3. OpenShift Assisted Installer</a></li>
-<li><a href="#_proxmox_provision">4. ProxMox Provision</a></li>
+<li><a href="#_openshift_assisted_installer">1.3. OpenShift Assisted Installer</a></li>
+<li><a href="#_proxmox_provision">1.4. ProxMox Provision</a></li>
 </ul>
 </li>
 </ul>
@@ -466,12 +466,70 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>inlcude::docs/overview-integration-on-openshift.adoc[leveloffset=+1]
-:leveloffset: +1</p>
+<p>The intent of this document is to organize all my notes during my journey of learning about
+integration technologies that can be deployed on a kubernetes / OpenShift platform. Coming
+from a background of understanding integration before these platforms, I find that I am
+often just trying to adapt what I know to what is now possible.</p>
+</div>
+<div class="paragraph">
+<p>In the past, when there was no platform to manage your workloads, we would leverage tools
+such as Apache Camel and Apache ActiveMQ to build out functionality. Projects such
+ServiceMix and JBoss Fuse assisted in providing a consistent run-time, however many
+enterprise requirements had to be tailored to the infrastructure that was available.</p>
+</div>
+<div class="paragraph">
+<p>With kubernetes / OpenShift, more of these enterprise requirements can be satisfied in a
+consistent manner. And perhaps more importantly, Apache Camel, Apache ActiveMQ, and
+Strimzi (AMQ Streams) have evolved with these platforms. This is where I like to focus
+my learning, finding ways that OpenShift can make Integration easier to consume in the
+enteprise.</p>
+</div>
+<div class="paragraph">
+<p>As part of this learning path, I did take a detour in provisioning an OpenShift cluster
+in my homelab. This step is certainly not required, however there is a need to have
+a place where you can deploy these projects into an OpenShift cluster.</p>
+</div>
+<div class="paragraph">
+<p>After acquiring a platform for an integration playground, topics that are to be explored
+will start with Camel and its subprojects.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Camel Core</p>
+</li>
+<li>
+<p>Camel K</p>
+</li>
+<li>
+<p>Kamelet</p>
+</li>
+<li>
+<p>Camel Quarkus</p>
+</li>
+<li>
+<p>Camel Karavan</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Messaging</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>AMQ Broker</p>
+</li>
+<li>
+<p>AMQ Streams</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
-<h1 id="_homelab_infrastructure" class="sect0"><a class="anchor" href="#_homelab_infrastructure"></a><a class="link" href="#_homelab_infrastructure">Homelab Infrastructure</a></h1>
+<div class="sect1">
+<h2 id="_homelab_infrastructure"><a class="anchor" href="#_homelab_infrastructure"></a><a class="link" href="#_homelab_infrastructure">1. Homelab Infrastructure</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>While not required to have a homelab for software development, having one can be a valueable
 learning experience. The intent of this guide is to document the steps to provision an
@@ -479,9 +537,8 @@ OpenShift environment that can host a variety of Open Source integration technol
 it will document steps to make your OpenShift cluster accessible from outside your home
 network.</p>
 </div>
-<div class="sect1">
-<h2 id="_homelab_architecture"><a class="anchor" href="#_homelab_architecture"></a><a class="link" href="#_homelab_architecture">1. Homelab Architecture</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_homelab_architecture"><a class="anchor" href="#_homelab_architecture"></a><a class="link" href="#_homelab_architecture">1.1. Homelab Architecture</a></h3>
 <div class="paragraph">
 <p>The following is a high level diagram of the hardware for my homelab.</p>
 </div>
@@ -525,8 +582,8 @@ become hosts to the OpenShift Cluster.</p>
 <div class="paragraph">
 <p>(<a href="https://mikrotik.com/product/crs317_1g_16s_rm" class="bare">https://mikrotik.com/product/crs317_1g_16s_rm</a>)</p>
 </div>
-<div class="sect2">
-<h3 id="_architectural_decisions"><a class="anchor" href="#_architectural_decisions"></a><a class="link" href="#_architectural_decisions">1.1. Architectural Decisions</a></h3>
+<div class="sect3">
+<h4 id="_architectural_decisions"><a class="anchor" href="#_architectural_decisions"></a><a class="link" href="#_architectural_decisions">1.1.1. Architectural Decisions</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -545,10 +602,8 @@ become hosts to the OpenShift Cluster.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_virtualization_platforms"><a class="anchor" href="#_virtualization_platforms"></a><a class="link" href="#_virtualization_platforms">2. Virtualization Platforms</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_virtualization_platforms"><a class="anchor" href="#_virtualization_platforms"></a><a class="link" href="#_virtualization_platforms">1.2. Virtualization Platforms</a></h3>
 <div class="paragraph">
 <p>There are a number of choices that were considered for a homelab virtualization platform.</p>
 </div>
@@ -576,8 +631,8 @@ it easier to manage all VMs in a central location.</p>
 <p>Red Hat Virtualization is also a viable option and I hope to evaluate in a future homelab execise.
 My experience with ProxMox was so positive that I just decided to go with that platform.</p>
 </div>
-<div class="sect2">
-<h3 id="_minimum_requirements"><a class="anchor" href="#_minimum_requirements"></a><a class="link" href="#_minimum_requirements">2.1. Minimum Requirements</a></h3>
+<div class="sect3">
+<h4 id="_minimum_requirements"><a class="anchor" href="#_minimum_requirements"></a><a class="link" href="#_minimum_requirements">1.2.1. Minimum Requirements</a></h4>
 <div class="paragraph">
 <p>As mentioned in the documentation for the current OpenShift release (4.10.3), the following
 is the minimum hardware requirements:</p>
@@ -599,8 +654,8 @@ is the minimum hardware requirements:</p>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_proxmox_configuration"><a class="anchor" href="#_proxmox_configuration"></a><a class="link" href="#_proxmox_configuration">2.2. ProxMox Configuration</a></h3>
+<div class="sect3">
+<h4 id="_proxmox_configuration"><a class="anchor" href="#_proxmox_configuration"></a><a class="link" href="#_proxmox_configuration">1.2.2. ProxMox Configuration</a></h4>
 <div class="paragraph">
 <p>There are a number of guides that can walk you through the provisioning of ProxMox VE. For a deep
 dive on how to install, the following guide is very helpful: <a href="https://forum.proxmox.com/threads/proxmox-beginner-tutorial-how-to-set-up-your-first-virtual-machine-on-a-secondary-hard-disk.59559/" class="bare">https://forum.proxmox.com/threads/proxmox-beginner-tutorial-how-to-set-up-your-first-virtual-machine-on-a-secondary-hard-disk.59559/</a></p>
@@ -621,10 +676,8 @@ just some of the features that make it worth it to cluster.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_openshift_assisted_installer"><a class="anchor" href="#_openshift_assisted_installer"></a><a class="link" href="#_openshift_assisted_installer">3. OpenShift Assisted Installer</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_openshift_assisted_installer"><a class="anchor" href="#_openshift_assisted_installer"></a><a class="link" href="#_openshift_assisted_installer">1.3. OpenShift Assisted Installer</a></h3>
 <div class="paragraph">
 <p>This guide was contructed for an OpenShift Assisted Cluster install, which is best described at the
 following location. <a href="https://cloud.redhat.com/blog/how-to-use-the-openshift-assisted-installer" class="bare">https://cloud.redhat.com/blog/how-to-use-the-openshift-assisted-installer</a>. The
@@ -662,17 +715,16 @@ button in the configuration table. This is depicted in the following figure:</p>
 <p>By uploading the ISO, it will then be available to the create VM process dialogs.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_proxmox_provision"><a class="anchor" href="#_proxmox_provision"></a><a class="link" href="#_proxmox_provision">4. ProxMox Provision</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_proxmox_provision"><a class="anchor" href="#_proxmox_provision"></a><a class="link" href="#_proxmox_provision">1.4. ProxMox Provision</a></h3>
 
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-04-22 16:55:22 UTC
+Last updated 2022-04-22 17:00:07 UTC
 </div>
 </div>
 </body>
