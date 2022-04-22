@@ -442,28 +442,30 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_homelab_infrastructure">1. Homelab Infrastructure</a>
+<li><a href="#_introduction">1. Introduction</a></li>
+<li><a href="#_homelab_infrastructure">2. Homelab Infrastructure</a>
 <ul class="sectlevel2">
-<li><a href="#_homelab_architecture">1.1. Homelab Architecture</a>
+<li><a href="#_homelab_architecture">2.1. Homelab Architecture</a>
 <ul class="sectlevel3">
-<li><a href="#_architectural_decisions">1.1.1. Architectural Decisions</a></li>
+<li><a href="#_architectural_decisions">2.1.1. Architectural Decisions</a></li>
 </ul>
 </li>
-<li><a href="#_virtualization_platforms">1.2. Virtualization Platforms</a>
+<li><a href="#_virtualization_platforms">2.2. Virtualization Platforms</a>
 <ul class="sectlevel3">
-<li><a href="#_minimum_requirements">1.2.1. Minimum Requirements</a></li>
-<li><a href="#_proxmox_configuration">1.2.2. ProxMox Configuration</a></li>
+<li><a href="#_minimum_requirements">2.2.1. Minimum Requirements</a></li>
+<li><a href="#_proxmox_configuration">2.2.2. ProxMox Configuration</a></li>
 </ul>
 </li>
-<li><a href="#_openshift_assisted_installer">1.3. OpenShift Assisted Installer</a></li>
-<li><a href="#_proxmox_provision">1.4. ProxMox Provision</a></li>
+<li><a href="#_openshift_assisted_installer">2.3. OpenShift Assisted Installer</a></li>
+<li><a href="#_proxmox_provision">2.4. ProxMox Provision</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div id="preamble">
+<div class="sect1">
+<h2 id="_introduction"><a class="anchor" href="#_introduction"></a><a class="link" href="#_introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The intent of this document is to organize all my notes during my journey of learning about
@@ -528,7 +530,7 @@ will start with Camel and its subprojects.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_homelab_infrastructure"><a class="anchor" href="#_homelab_infrastructure"></a><a class="link" href="#_homelab_infrastructure">1. Homelab Infrastructure</a></h2>
+<h2 id="_homelab_infrastructure"><a class="anchor" href="#_homelab_infrastructure"></a><a class="link" href="#_homelab_infrastructure">2. Homelab Infrastructure</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>While not required to have a homelab for software development, having one can be a valueable
@@ -538,7 +540,7 @@ it will document steps to make your OpenShift cluster accessible from outside yo
 network.</p>
 </div>
 <div class="sect2">
-<h3 id="_homelab_architecture"><a class="anchor" href="#_homelab_architecture"></a><a class="link" href="#_homelab_architecture">1.1. Homelab Architecture</a></h3>
+<h3 id="_homelab_architecture"><a class="anchor" href="#_homelab_architecture"></a><a class="link" href="#_homelab_architecture">2.1. Homelab Architecture</a></h3>
 <div class="paragraph">
 <p>The following is a high level diagram of the hardware for my homelab.</p>
 </div>
@@ -553,20 +555,20 @@ overview, there are two networks created:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>192.168.1.x : handles all non-homelab traffic in my home. This would include Network APs and general
+<p><code>192.168.1.x</code> : handles all non-homelab traffic in my home. This would include Network APs and general
 home stuff.</p>
 </li>
 <li>
-<p>10.10.10.x : homelab network traffic, which at this point is an OpenShift Cluster.</p>
+<p><code>10.10.10.x</code> : homelab network traffic, which at this point is an OpenShift Cluster.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>The <a href="https://store.ui.com/collections/operator-edgemax-switches/products/edgeswitch-24-250w">EdgeSwitch PoE+ 24</a>
-is the switch that I use for 192.168.1.x network. While there are a number
+is the switch that I use for <code>192.168.1.x</code> network. While there are a number
 devices attached to this network, for the purposes of this guide there is a FreeNas and Work Laptop.
 There is a FreeNAS baremetal node that I hope to encorporate into the OpenShift Cluster in the
-future. My Work Laptop exists on the 192.168.1.x network and can route to the 10.10.10.x network as
+future. My Work Laptop exists on the <code>192.168.1.x</code> network and can route to the <code>10.10.10.x</code> network as
 needed.</p>
 </div>
 <div class="paragraph">
@@ -575,7 +577,7 @@ was used due to its ability to switch traffic at 10 gbe speeds. Connected to thi
 Switch are three baremetal computers which will become hosts to the OpenShift Cluster.</p>
 </div>
 <div class="sect3">
-<h4 id="_architectural_decisions"><a class="anchor" href="#_architectural_decisions"></a><a class="link" href="#_architectural_decisions">1.1.1. Architectural Decisions</a></h4>
+<h4 id="_architectural_decisions"><a class="anchor" href="#_architectural_decisions"></a><a class="link" href="#_architectural_decisions">2.1.1. Architectural Decisions</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -595,7 +597,7 @@ Switch are three baremetal computers which will become hosts to the OpenShift Cl
 </div>
 </div>
 <div class="sect2">
-<h3 id="_virtualization_platforms"><a class="anchor" href="#_virtualization_platforms"></a><a class="link" href="#_virtualization_platforms">1.2. Virtualization Platforms</a></h3>
+<h3 id="_virtualization_platforms"><a class="anchor" href="#_virtualization_platforms"></a><a class="link" href="#_virtualization_platforms">2.2. Virtualization Platforms</a></h3>
 <div class="paragraph">
 <p>There are a number of choices that were considered for a homelab virtualization platform.</p>
 </div>
@@ -608,7 +610,7 @@ Switch are three baremetal computers which will become hosts to the OpenShift Cl
 <p><a href="https://www.proxmox.com/en/proxmox-ve">ProxMox VE</a>: Also based on KVM.</p>
 </li>
 <li>
-<p>VMWare ESXi <a href="https://www.vmware.com/products/esxi-and-esx.html">VMWare ESXi</a>: Costs money / not open source.</p>
+<p><a href="https://www.vmware.com/products/esxi-and-esx.html">VMWare ESXi</a>: Costs money / not open source.</p>
 </li>
 </ol>
 </div>
@@ -624,7 +626,7 @@ it easier to manage all VMs in a central location.</p>
 My experience with ProxMox was so positive that I just decided to go with that platform.</p>
 </div>
 <div class="sect3">
-<h4 id="_minimum_requirements"><a class="anchor" href="#_minimum_requirements"></a><a class="link" href="#_minimum_requirements">1.2.1. Minimum Requirements</a></h4>
+<h4 id="_minimum_requirements"><a class="anchor" href="#_minimum_requirements"></a><a class="link" href="#_minimum_requirements">2.2.1. Minimum Requirements</a></h4>
 <div class="paragraph">
 <p>As mentioned in the documentation for the current OpenShift release (4.10.3), the following
 is the minimum hardware requirements:</p>
@@ -647,17 +649,27 @@ is the minimum hardware requirements:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_proxmox_configuration"><a class="anchor" href="#_proxmox_configuration"></a><a class="link" href="#_proxmox_configuration">1.2.2. ProxMox Configuration</a></h4>
+<h4 id="_proxmox_configuration"><a class="anchor" href="#_proxmox_configuration"></a><a class="link" href="#_proxmox_configuration">2.2.2. ProxMox Configuration</a></h4>
 <div class="paragraph">
 <p>There are a number of guides that can walk you through the provisioning of ProxMox VE. For a deep
 dive on how to install, the following <a href="https://forum.proxmox.com/threads/proxmox-beginner-tutorial-how-to-set-up-your-first-virtual-machine-on-a-secondary-hard-disk.59559/">guide is very helpful</a>.</p>
 </div>
 <div class="paragraph">
-<p>Here is a simplified set of steps that I used:
-* Download the latest ISO from: <a href="https://www.proxmox.com/en/downloads">https://www.proxmox.com/en/downloads</a>
-* Follow the install steps to provision on bare metal.
-* Configure with a static IP (10.10.10.10, 10.10.10.11, 10.10.10.12) and I choose the following
+<p>Here is a simplified set of steps that I used:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Download the latest ISO from: <a href="https://www.proxmox.com/en/downloads">https://www.proxmox.com/en/downloads</a></p>
+</li>
+<li>
+<p>Follow the install steps to provision on bare metal.</p>
+</li>
+<li>
+<p>Configure with a static IP (10.10.10.10, 10.10.10.11, 10.10.10.12) and I choose the following
 hostnames (pve1, pve2, pve3).</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Upon completing the install across all three nodes, then follow the steps in the GUI to
@@ -669,7 +681,7 @@ just some of the features that make it worth it to cluster.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_openshift_assisted_installer"><a class="anchor" href="#_openshift_assisted_installer"></a><a class="link" href="#_openshift_assisted_installer">1.3. OpenShift Assisted Installer</a></h3>
+<h3 id="_openshift_assisted_installer"><a class="anchor" href="#_openshift_assisted_installer"></a><a class="link" href="#_openshift_assisted_installer">2.3. OpenShift Assisted Installer</a></h3>
 <div class="paragraph">
 <p>This <a href="https://cloud.redhat.com/blog/how-to-use-the-openshift-assisted-installer">guide</a> was contructed
 for an OpenShift Assisted Cluster install. The basic premise of this approach is that you create /
@@ -707,7 +719,7 @@ button in the configuration table. This is depicted in the following figure:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_proxmox_provision"><a class="anchor" href="#_proxmox_provision"></a><a class="link" href="#_proxmox_provision">1.4. ProxMox Provision</a></h3>
+<h3 id="_proxmox_provision"><a class="anchor" href="#_proxmox_provision"></a><a class="link" href="#_proxmox_provision">2.4. ProxMox Provision</a></h3>
 
 </div>
 </div>
@@ -715,7 +727,7 @@ button in the configuration table. This is depicted in the following figure:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-04-22 17:44:07 UTC
+Last updated 2022-04-22 17:54:28 UTC
 </div>
 </div>
 </body>
