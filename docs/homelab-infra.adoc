@@ -146,7 +146,7 @@ is installed across the hosts.
 The following diagram depicts how the ProxMox Console looks after the VMs are deployed 
 and started.
 
-image:2022-Proxmox-Console-Deployed.png[ProxMox Console after Deployment]
+image:2022-ProxMox-Console-Deployed.png[ProxMox Console after Deployment]
 
 ## Red Hat Hybrid Cloud Console
 
