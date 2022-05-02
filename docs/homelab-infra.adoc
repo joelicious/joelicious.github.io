@@ -143,8 +143,26 @@ Upon provisioning the VMs with the provided ISO Image, the hosts will register t
 with the Red Hat Hybrid Cloud Console, roles are assigned, and then the OpenShift cluster
 is installed across the hosts.
 
-Finally, Web Console access is provide to your own cluster, along with guidance on updating
-your DNS Server or updating a local `/etc/hosts` or `/etc/resolv.conf`.
+The following diagram depicts how the ProxMox Console looks after the VMs are deployed 
+and started.
+
+image:2022-Proxmox-Console-Deployed.png[ProxMox Console after Deployment]
+
+## Red Hat Hybrid Cloud Console
+
+As mentioned, the VMs will continue to provision and then finish the install of the OpenShift
+Platform. Upon completion, the console view provides access information to your own cluster, 
+along with guidance on updating your DNS Server or updating a local `/etc/hosts` 
+or `/etc/resolv.conf`.
+
+As an example, the Cluster Console will look similar to the following:
+
+image:2022-RH-Cloud-Console.png[Red Hat Hybrid Cloud Console Complete]
+
+The Cluster utilization should match up to the amount of resources allocated to the
+VMs in the ProxMox Cluster, as picted in the following:
+
+image:2022-OpenShift-utilization.png[Openshift Utilization]
 
 ## Making Your OpenShift Cluster Available outside Homelab
 
