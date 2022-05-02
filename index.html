@@ -458,7 +458,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_openshift_assisted_installer">2.3. OpenShift Assisted Installer</a></li>
 <li><a href="#_proxmox_provision">2.4. ProxMox Provision</a></li>
-<li><a href="#_making_your_openshift_cluster_available_outside_homelab">2.5. Making Your OpenShift Cluster Available outside Homelab</a></li>
+<li><a href="#_red_hat_hybrid_cloud_console">2.5. Red Hat Hybrid Cloud Console</a></li>
+<li><a href="#_making_your_openshift_cluster_available_outside_homelab">2.6. Making Your OpenShift Cluster Available outside Homelab</a></li>
 </ul>
 </li>
 <li><a href="#_camel_k">3. Camel K</a>
@@ -798,12 +799,37 @@ with the Red Hat Hybrid Cloud Console, roles are assigned, and then the OpenShif
 is installed across the hosts.</p>
 </div>
 <div class="paragraph">
-<p>Finally, Web Console access is provide to your own cluster, along with guidance on updating
-your DNS Server or updating a local <code>/etc/hosts</code> or <code>/etc/resolv.conf</code>.</p>
+<p>The following diagram depicts how the ProxMox Console looks after the VMs are deployed
+and started.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/2022-Proxmox-Console-Deployed.png" alt="ProxMox Console after Deployment"></span></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_making_your_openshift_cluster_available_outside_homelab"><a class="anchor" href="#_making_your_openshift_cluster_available_outside_homelab"></a><a class="link" href="#_making_your_openshift_cluster_available_outside_homelab">2.5. Making Your OpenShift Cluster Available outside Homelab</a></h3>
+<h3 id="_red_hat_hybrid_cloud_console"><a class="anchor" href="#_red_hat_hybrid_cloud_console"></a><a class="link" href="#_red_hat_hybrid_cloud_console">2.5. Red Hat Hybrid Cloud Console</a></h3>
+<div class="paragraph">
+<p>As mentioned, the VMs will continue to provision and then finish the install of the OpenShift
+Platform. Upon completion, the console view provides access information to your own cluster,
+along with guidance on updating your DNS Server or updating a local <code>/etc/hosts</code>
+or <code>/etc/resolv.conf</code>.</p>
+</div>
+<div class="paragraph">
+<p>As an example, the Cluster Console will look similar to the following:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/2022-RH-Cloud-Console.png" alt="Red Hat Hybrid Cloud Console Complete"></span></p>
+</div>
+<div class="paragraph">
+<p>The Cluster utilization should match up to the amount of resources allocated to the
+VMs in the ProxMox Cluster, as picted in the following:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/2022-OpenShift-utilization.png" alt="Openshift Utilization"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_making_your_openshift_cluster_available_outside_homelab"><a class="anchor" href="#_making_your_openshift_cluster_available_outside_homelab"></a><a class="link" href="#_making_your_openshift_cluster_available_outside_homelab">2.6. Making Your OpenShift Cluster Available outside Homelab</a></h3>
 <div class="paragraph">
 <p>TODO[TODO]</p>
 </div>
@@ -893,7 +919,7 @@ your DNS Server or updating a local <code>/etc/hosts</code> or <code>/etc/resolv
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-04-22 19:48:45 UTC
+Last updated 2022-05-02 03:50:32 UTC
 </div>
 </div>
 </body>
